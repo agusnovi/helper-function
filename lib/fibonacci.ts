@@ -168,3 +168,32 @@ export function getIndexFibonacci(num: number) {
 
     return -1
 }
+
+export function recrusion(n: number): number[] {
+    if (n <= 2) {
+        return [0, 1]
+    }
+
+    const res = recrusion(n - 1)
+    res.push(res[res.length - 1] + res[res.length - 2])
+
+    return res
+}
+
+export function getNumberByIndex(num: number) {
+    if (num < 1) return -1
+    if (num === 1 || num === 2) return num - 1
+    let first = 0
+    let second = 1
+    let temp = first + second
+    let index = 3
+    
+    while (index < num) {
+        first = second
+        second = temp
+        temp = first + second
+        index ++
+    }
+
+    return temp
+}
