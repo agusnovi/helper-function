@@ -83,3 +83,52 @@ export function bubbleSort(arr: number[], end: number) {
     // o(n) + o(n^2)
     // bubbleSort(arr, end - 1)
 }
+
+function partitionTrue(start: number, end: number, arr: number[]) {
+  const pivot = arr[start]
+  let swapIndex = start
+
+  for (let i = start + 1; i <= end; i++) {
+    if (pivot > arr[i]) {
+      swapIndex++
+      if (swapIndex !== i) {
+        [arr[swapIndex], arr[i]] = [arr[i], arr[swapIndex]]
+      }
+    }
+  }
+
+  if (swapIndex !== start) {
+    [arr[swapIndex], arr[start]] = [arr[start], arr[swapIndex]];
+  }
+
+  return swapIndex
+}
+
+export function quickSortTrue(arr: number[], start: number, end: number) {
+  if (start >= end) return;
+  console.log("====<<< start", start, "end", end)
+  const swapIndex = partitionTrue(start, end, arr)
+  quickSortTrue(arr, start, swapIndex-1);
+  quickSortTrue(arr, swapIndex + 1, end);
+  return arr
+}
+
+export function bubbleSortTrue(arr: number[]) {
+  for (let j = 0; j < arr.length; j++) {
+    for (let i = 0; i < (arr.length - 1 - j); i++) {
+      if (arr[i] > arr[i + 1]) {
+        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+      }
+    }
+  }
+}
+
+export function selectionSort(arr: number[]) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[i]) {
+        [arr[j], arr[i]] = [arr[i], arr[j]];
+      }
+    }
+  }
+}

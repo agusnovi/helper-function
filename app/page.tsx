@@ -13,10 +13,18 @@ import {
   getNumberByIndex,
 } from '@/lib/fibonacci';
 
-import { mergeSort, quickSort, bubbleSort } from '@/lib/sort';
+import {
+  mergeSort,
+  quickSort,
+  bubbleSort,
+  selectionSort,
+  bubbleSortTrue,
+  quickSortTrue,
+} from '@/lib/sort';
+import { bst } from "@/lib/bst"
 
 export default function Home() {
-  const res1 = fibonacciWhile(15);
+  // const res1 = fibonacciWhile(15);
   // const res2 = isFibonacci(611);
   // const res3 = getFibonacciByNumber(20);
   // const res4 = generateFibonacci(70, 6)
@@ -31,9 +39,39 @@ export default function Home() {
   // console.log(res1, res12);
 
   // const sorted1 = mergeSort(["sdsd", "aa", "er", "f", "h", "q", "sr"])
-  const arr = [3, 1, 5, 3, 444, 2, 10, 985, 56, 77, 3]
+  const arr = [3, 2, 4, 9, 1, 0, 8, 7]
   // quickSort(arr, 0, arr.length -1)
   // bubbleSort(arr, arr.length -1)
+  // selectionSort(arr)
+  // bubbleSortTrue(arr);
+  quickSortTrue(arr, 0, arr.length -1)
   console.log(arr)
+
+  const bs = new bst()
+  // bs.insert(3)
+  // bs.insert(1)
+  // bs.insert(22222)
+  // bs.insert(8)
+  // bs.insert(5)
+  // bs.insert(5)
+  bs.insertNewVersion(3)
+  bs.insertNewVersion(1)
+  bs.insertNewVersion(22222);
+  bs.insertNewVersion(8)
+  bs.insertNewVersion(5)
+  bs.insertNewVersion(5)
+  // bs.removeBst(22222);
+  // console.log(bs.findNodeLoop(5));
+  // console.log(bs.display())
+  // console.log(bs.displayHeight())
+  // 3
+  // /\
+  // 1 22222
+  //   /
+  //   8
+  //   /
+  //   5
+  //   /
+  //   5
   return <h1>hello world</h1>;
 }
