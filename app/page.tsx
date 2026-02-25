@@ -22,7 +22,9 @@ import {
   quickSortTrue,
   mergeSortTrue,
 } from '@/lib/sort';
+
 import { bst } from "@/lib/bst"
+import { binarySearchTree } from "@/lib/binary-search"
 
 export default function Home() {
   // const res1 = fibonacciWhile(15);
@@ -38,7 +40,7 @@ export default function Home() {
   // const res11 = recrusion(10)
   // const res12 = getNumberByIndex(18);
   // console.log(res1, res12);
-
+  // =======================================
   // const sorted1 = mergeSort(["sdsd", "aa", "er", "f", "h", "q", "sr"])
   // const arr = [3, 2, 4, 9, 1, 0, 8, 7]
   // quickSort(arr, 0, arr.length -1)
@@ -48,20 +50,20 @@ export default function Home() {
   // quickSortTrue(arr, 0, arr.length -1)
   // const res = mergeSortTrue(arr)
   // console.log(res)
-
-  const bs = new bst()
+  // =======================================
+  // const bs = new bst()
   // bs.insert(3)
   // bs.insert(1)
   // bs.insert(22222)
   // bs.insert(8)
   // bs.insert(5)
   // bs.insert(5)
-  bs.insertNewVersion(3)
-  bs.insertNewVersion(1)
-  bs.insertNewVersion(22222);
-  bs.insertNewVersion(8)
-  bs.insertNewVersion(5)
-  bs.insertNewVersion(5)
+  // bs.insertNewVersion(3)
+  // bs.insertNewVersion(1)
+  // bs.insertNewVersion(22222);
+  // bs.insertNewVersion(8)
+  // bs.insertNewVersion(5)
+  // bs.insertNewVersion(5)
   // console.log(bs.depthFirstTraversalPreOrder());
   // console.log(bs.depthFirstTraversalInorder());
   // console.log(bs.depthFirstTraversalPostorder());
@@ -79,5 +81,25 @@ export default function Home() {
   //   5
   //   /
   //   5
+  // =======================================
+  
+  const binarySearch = new binarySearchTree()
+  binarySearch.insertNewNode(4)
+  binarySearch.insertNewNode(40);
+  binarySearch.insertNewNode(14);
+  binarySearch.insertNewNode(3);
+  binarySearch.insertNewNode(6);
+  binarySearch.insertNewNode(0);
+  binarySearch.insertNewNode(1);
+  binarySearch.insertNewNode(-1);
+  //       4
+  //      / \
+  //     3   40
+  //    /    /
+  //   0    14
+  //  / \   /
+  // -1 1  6
+  // console.log(binarySearch.displayJson());
+  // console.log(binarySearch.breadthFirstTraversal());
   return <h1>hello world</h1>;
 }
