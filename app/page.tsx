@@ -20,6 +20,7 @@ import {
   selectionSort,
   bubbleSortTrue,
   quickSortTrue,
+  mergeSortTrue,
 } from '@/lib/sort';
 import { bst } from "@/lib/bst"
 
@@ -39,13 +40,14 @@ export default function Home() {
   // console.log(res1, res12);
 
   // const sorted1 = mergeSort(["sdsd", "aa", "er", "f", "h", "q", "sr"])
-  const arr = [3, 2, 4, 9, 1, 0, 8, 7]
+  // const arr = [3, 2, 4, 9, 1, 0, 8, 7]
   // quickSort(arr, 0, arr.length -1)
   // bubbleSort(arr, arr.length -1)
   // selectionSort(arr)
   // bubbleSortTrue(arr);
-  quickSortTrue(arr, 0, arr.length -1)
-  console.log(arr)
+  // quickSortTrue(arr, 0, arr.length -1)
+  // const res = mergeSortTrue(arr)
+  // console.log(res)
 
   const bs = new bst()
   // bs.insert(3)
@@ -60,6 +62,10 @@ export default function Home() {
   bs.insertNewVersion(8)
   bs.insertNewVersion(5)
   bs.insertNewVersion(5)
+  // console.log(bs.depthFirstTraversalPreOrder());
+  // console.log(bs.depthFirstTraversalInorder());
+  // console.log(bs.depthFirstTraversalPostorder());
+  // console.log(bs.breadthFirstTraversal())
   // bs.removeBst(22222);
   // console.log(bs.findNodeLoop(5));
   // console.log(bs.display())

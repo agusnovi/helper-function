@@ -84,6 +84,34 @@ export function bubbleSort(arr: number[], end: number) {
     // bubbleSort(arr, end - 1)
 }
 
+//====================
+
+function comparationSwap(left: number[], right: number[]) {
+  const results = []
+
+  while (left.length && right.length) {
+    if (left[0] < right[0]) {
+      results.push(left.shift())
+    } else {
+      results.push(right.shift())
+    }
+  }
+  return [...results, ...left, ...right]
+}
+
+export function mergeSortTrue(arr: number[]) {
+  if (arr.length <= 1) return arr
+  
+  const middle = Math.floor(arr.length / 2)
+  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const left: any = mergeSortTrue(arr.slice(0, middle));
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const right: any = mergeSortTrue(arr.slice(middle));
+
+  return comparationSwap(left, right)
+}
+
 function partitionTrue(start: number, end: number, arr: number[]) {
   const pivot = arr[start]
   let swapIndex = start
@@ -106,11 +134,21 @@ function partitionTrue(start: number, end: number, arr: number[]) {
 
 export function quickSortTrue(arr: number[], start: number, end: number) {
   if (start >= end) return;
-  console.log("====<<< start", start, "end", end)
-  const swapIndex = partitionTrue(start, end, arr)
-  quickSortTrue(arr, start, swapIndex-1);
+
+  const swapIndex = partitionTrue(start, end, arr);
+  // [3, 2, 4, 9, 1, 0, 8, 7]
+  // [3, 2, 4, 9, 1, 0, 8, 7]
+  // [3, 2, 1, 9, 4, 0, 8, 7]
+  // [3, 2, 1, 0, 4, 9, 8, 7]
+  // [0, 2, 1, 3, 4, 9, 8, 7]
+  // [0, 2, 1] 3 [4, 9, 8, 7]
+  // [0, 2, 1] = 0, 2
+  // 0 [2, 1] => swapIndex = 0; left = 0, -1(stop); right = 1, 2
+  // 0 [1, 2] => swapIndex = 1; left = 1, 0; right = 2, 2
+
+  quickSortTrue(arr, start, swapIndex - 1);
   quickSortTrue(arr, swapIndex + 1, end);
-  return arr
+  return arr;
 }
 
 export function bubbleSortTrue(arr: number[]) {
@@ -132,3 +170,5 @@ export function selectionSort(arr: number[]) {
     }
   }
 }
+
+//====================

@@ -141,20 +141,104 @@ export class bst {
   }
 
   findNodeLoop(num: number) {
-    if (!this.root) return false
+    if (!this.root) return false;
 
-    let current: node | null = this.root
+    let current: node | null = this.root;
 
     while (current && current.value) {
       if (current.value === num) return true;
       else if (current.value > num) {
-        current = current.left
-      } else if(current.value < num) {
-        current = current.right
+        current = current.left;
+      } else if (current.value < num) {
+        current = current.right;
       }
     }
 
-    return false
+    return false;
+  }
+
+  //===========================
+
+  breadthFirstTraversal() {
+    const queue = [
+      {
+        label: 'root',
+        value: this.root,
+      },
+    ];
+    const output = [];
+    while (queue.length) {
+      let size = queue.length;
+      const arrayLevel = [];
+      while (size) {
+        const node = queue.shift();
+        arrayLevel.push(node);
+        node?.value?.left &&
+          queue.push({ label: 'left', value: node?.value.left });
+        node?.value?.right &&
+          queue.push({ label: 'right', value: node?.value.right });
+        size--;
+      }
+      output.push(arrayLevel);
+    }
+    return output;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  prereOrder(root: any, queue: number[]) {
+    if (root === null) return;
+    else {
+      queue.push(root.value);
+      root.left && this.prereOrder(root.left, queue);
+      root.right && this.prereOrder(root.right, queue);
+    }
+  }
+
+  depthFirstTraversalPreOrder() {
+    const queue: number[] = [];
+    this.prereOrder(this.root, queue);
+    return queue
+    //      3
+    //    /   \
+    //  1     22222
+    //        /
+    //        8
+    //      /
+    //    5
+    //     \
+    //       5
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  inorder(root: any, queue: number[]) {
+    if (!root) return 
+    else {
+      root.left && this.inorder(root.left, queue)
+      queue.push(root.value)
+      root.right && this.inorder(root.right, queue)
+    }
+  }
+
+  depthFirstTraversalInorder() {
+    const queue: number[] = []
+    this.inorder(this.root, queue)
+    return queue
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  postorder(root: any, queue: number[]) {
+    if (!root) return
+    else {
+      root.left && this.postorder(root.left, queue)
+      root.right && this.postorder(root.right, queue)
+      queue.push(root.value)
+    }
+  }
+
+  depthFirstTraversalPostorder() {
+    const queue: number[] = []
+    this.postorder(this.root, queue);
+    return queue
   }
 
   display() {
